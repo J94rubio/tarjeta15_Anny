@@ -66,7 +66,8 @@ const ConfirmationModal = ({ isOpen, onClose }) => {
     }
     setIsSubmitting(true);
     try {
-      const response = await fetch('/api/confirmacion', {
+      const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api';
+      const response = await fetch(`${API_BASE_URL}/confirmacion`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
