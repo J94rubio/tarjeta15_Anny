@@ -804,7 +804,7 @@ const App = () => {
         .ubicacion-beckan {
           font-family: 'Beckan', 'Beckan Regular', Arial, sans-serif !important;
           font-size: 2rem;
-          color: #c2185b;
+          color: #b43b35;
           letter-spacing: 0.05em;
         }
         .parrafo-bellerose {
