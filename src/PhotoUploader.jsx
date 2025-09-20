@@ -88,54 +88,103 @@ function PhotoUploader({ onPhotoUploaded }) {
 
   return (
     <div>
+      {/* Estilos específicos del PhotoUploader */}
+      <style>
+        {`
+          .uploader-label {
+            font-family: 'Bellerose', Arial, sans-serif;
+            color: #AC3939;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(172, 57, 57, 0.1);
+          }
+          .uploader-input {
+            font-family: 'Bellerose', Arial, sans-serif;
+            border: 2px solid #e48497;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #a44a54;
+            transition: all 0.3s ease;
+          }
+          .uploader-input:focus {
+            border-color: #AC3939;
+            box-shadow: 0 0 0 3px rgba(172, 57, 57, 0.1);
+            outline: none;
+          }
+          .uploader-input::placeholder {
+            color: #b08a93;
+            font-style: italic;
+          }
+          .upload-area {
+            border: 3px dashed #e48497;
+            background: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+          }
+          .upload-area.drag-over {
+            border-color: #AC3939;
+            background: rgba(255, 182, 193, 0.2);
+            transform: scale(1.02);
+          }
+          .upload-button {
+            background: linear-gradient(145deg, #AC3939, #b43b35);
+            color: white;
+            font-family: 'Bellerose', Arial, sans-serif;
+            border: none;
+            border-radius: 12px;
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(172, 57, 57, 0.3);
+            transition: all 0.3s ease;
+          }
+          .upload-button:hover {
+            background: linear-gradient(145deg, #b43b35, #c44248);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(172, 57, 57, 0.4);
+          }
+        `}
+      </style>
+
       {/* Campos de información */}
-      <div style={{ marginBottom: '1.5rem' }}>
-        <div style={{ marginBottom: '1rem' }}>
-          <label style={{ 
+      <div style={{ marginBottom: '1.8rem' }}>
+        <div style={{ marginBottom: '1.2rem' }}>
+          <label className="uploader-label" style={{ 
             display: 'block', 
-            marginBottom: '0.5rem', 
-            color: '#333',
-            fontSize: '1rem',
-            fontWeight: 'bold'
+            marginBottom: '0.6rem'
           }}>
             Tu nombre *
           </label>
           <input
+            className="uploader-input"
             type="text"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
             placeholder="Escribe tu nombre completo"
             style={{
               width: '100%',
-              padding: '0.8rem',
-              border: '2px solid #ddd',
-              borderRadius: '8px',
+              padding: '1rem',
               fontSize: '1rem',
               boxSizing: 'border-box'
             }}
           />
         </div>
         
-        <div style={{ marginBottom: '1rem' }}>
-          <label style={{ 
+        <div style={{ marginBottom: '1.2rem' }}>
+          <label className="uploader-label" style={{ 
             display: 'block', 
-            marginBottom: '0.5rem', 
-            color: '#333',
-            fontSize: '1rem',
-            fontWeight: 'bold'
+            marginBottom: '0.6rem'
           }}>
             Descripción (opcional)
           </label>
           <input
+            className="uploader-input"
             type="text"
             value={descripcion}
             onChange={(e) => setDescripcion(e.target.value)}
             placeholder="Describe el momento capturado"
             style={{
               width: '100%',
-              padding: '0.8rem',
-              border: '2px solid #ddd',
-              borderRadius: '8px',
+              padding: '1rem',
               fontSize: '1rem',
               boxSizing: 'border-box'
             }}
@@ -144,27 +193,35 @@ function PhotoUploader({ onPhotoUploaded }) {
       </div>
 
       {/* Área de subida de archivos */}
-      <div style={{
-        border: `2px dashed ${dragOver ? '#ff6b6b' : '#ddd'}`,
-        borderRadius: '10px',
-        padding: '2rem',
-        textAlign: 'center',
-        backgroundColor: dragOver ? '#fff5f5' : '#f9f9f9',
-        transition: 'all 0.3s ease'
-      }}
-      onDrop={handleDrop}
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
+      <div 
+        className={`upload-area ${dragOver ? 'drag-over' : ''}`}
+        style={{
+          borderRadius: '18px',
+          padding: '2.5rem',
+          textAlign: 'center',
+          position: 'relative'
+        }}
+        onDrop={handleDrop}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
       >
         {uploading ? (
           <div>
-            <div>📤 Subiendo fotos...</div>
-            <div style={{ marginTop: '1rem' }}>
+            <div style={{ 
+              fontSize: '1.4rem', 
+              fontFamily: 'Bellerose, Arial, sans-serif',
+              color: '#AC3939',
+              fontWeight: 'bold',
+              marginBottom: '1rem'
+            }}>
+              📤 Subiendo fotos...
+            </div>
+            <div style={{ marginTop: '1.5rem' }}>
               <div style={{
-                width: '50px',
-                height: '50px',
-                border: '3px solid #ff6b6b',
-                borderTop: '3px solid transparent',
+                width: '60px',
+                height: '60px',
+                border: '4px solid #e48497',
+                borderTop: '4px solid #AC3939',
                 borderRadius: '50%',
                 animation: 'spin 1s linear infinite',
                 margin: '0 auto'
@@ -173,18 +230,26 @@ function PhotoUploader({ onPhotoUploaded }) {
           </div>
         ) : (
           <div>
-            <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>📸</div>
-            <div>Arrastra y suelta tus fotos aquí</div>
-            <div style={{ margin: '1rem 0', color: '#666' }}>o</div>
-            <label style={{
-              background: '#ff6b6b',
-              color: 'white',
-              padding: '10px 20px',
-              borderRadius: '5px',
-              cursor: 'pointer',
-              display: 'inline-block'
+            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>🌸</div>
+            <div style={{ 
+              fontSize: '1.3rem',
+              fontFamily: 'Bellerose, Arial, sans-serif',
+              color: '#AC3939',
+              marginBottom: '0.8rem',
+              fontWeight: 'bold'
             }}>
-              Seleccionar Archivos
+              Arrastra y suelta tus fotos aquí
+            </div>
+            <div style={{ 
+              margin: '1.2rem 0', 
+              fontSize: '1.1rem',
+              fontFamily: 'Bellerose, Arial, sans-serif',
+              color: '#a44a54' 
+            }}>
+              o
+            </div>
+            <label className="upload-button">
+              📷 Seleccionar Archivos
               <input 
                 type="file" 
                 multiple 
@@ -193,6 +258,17 @@ function PhotoUploader({ onPhotoUploaded }) {
                 style={{ display: 'none' }}
               />
             </label>
+            
+            {/* Pequeños detalles decorativos */}
+            <div style={{ 
+              marginTop: '1.5rem',
+              fontSize: '0.9rem',
+              fontFamily: 'Bellerose, Arial, sans-serif',
+              color: '#b08a93',
+              fontStyle: 'italic'
+            }}>
+              Formatos soportados: JPG, PNG, GIF
+            </div>
           </div>
         )}
       </div>
