@@ -216,8 +216,13 @@ const App = () => {
   }, []);
 
   // Función para refrescar fotos después de subir una nueva
-  const handlePhotoUploaded = () => {
-    loadPhotos(); // Recargar la galería
+  const handlePhotoUploaded = async () => {
+    console.log('📸 Recargando fotos después de subir nueva foto...');
+    setLoadingPhotos(true);
+    const photos = await loadEventPhotos();
+    setUploadedPhotos(photos);
+    setLoadingPhotos(false);
+    console.log(`✅ ${photos.length} fotos cargadas después de upload`);
   };
 
   // Función para manejar la música
@@ -369,7 +374,7 @@ const App = () => {
         <div style={{ margin: '2.5rem 0', textAlign: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
             <img src="/Ramas.svg" alt="Ramas decorativas izquierda" style={{ width: '88px', height: 'auto', transform: 'scaleX(-1)' }} />
-            <span className="ubicacion-beckan">Ubicación</span>
+                        <span className="ubicacion-beckan">Ubicación</span>
             <img src="/Ramas.svg" alt="Ramas decorativas derecha" style={{ width: '88px', height: 'auto' }} />
           </div>
           <span className="ubicacion-beckan">Cl 17 Sur #22 - 37</span>
