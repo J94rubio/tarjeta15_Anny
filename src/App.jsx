@@ -340,7 +340,14 @@ const App = () => {
 
         {/* Foto de la quinceañera */}
         <p className="parrafo-bellerose">
-          Dios nos premio con la llegada de Anny a nuestras vidas, hemos tenido la fortuna de ver como ha crecido convirtiéndose en la persona maravillosa que es hoy. Como ha creado una personalidad increíble, llena de nobleza, felicidad y mucho amor. <br /> Por esta y muchas razones más... <br /> En esta fecha tan importante José Rubio y Daniela Duque te invitan a celebrar los 15 años de
+          Un día soñado, un instante eterno
+          <br /><br />
+          Hace quince años...<br /> Dios nos regaló la dicha más grande: la llegada de Anny Tatiana, un ser lleno de nobleza, alegría y amor, que ha iluminado nuestras vidas con felicidad. <br />
+          Hoy, la niña que un día llevamos en brazos, florece con gracia y dulzura para iniciar una nueva etapa de sueños e ilusiones.<br />
+          Y en esta fecha tan especial, deseamos que nos acompañes a celebrar la magia de sus quince años.<br />
+
+          Con amor<br />
+          José Rubio y Daniela Duque
         </p>
         
         <div style={{ textAlign: 'center', marginBottom: '2.5rem', marginTop: '2.5rem' }}>
@@ -377,7 +384,8 @@ const App = () => {
                         <span className="ubicacion-beckan">Ubicación</span>
             <img src="/Ramas.svg" alt="Ramas decorativas derecha" style={{ width: '88px', height: 'auto' }} />
           </div>
-          <span className="ubicacion-beckan">Cl 17 Sur #22 - 37</span>
+          <span className="ubicacion-beckan">Cl 17 Sur #22 - 37</span> <br />
+          <span className="ubicacion-beckan">Piso 2 Salón Fenix</span>
           <iframe
             className="map-iframe"
             title="Mapa"
@@ -448,8 +456,8 @@ const App = () => {
             <h2 className="lluvia-sobres-titulo beckan-font">LLUVIA DE SOBRES</h2>
             <p className="lluvia-sobres-texto">
               Mi mejor regalo será compartir este día contigo.<br />
-              Si deseas obsequiarme algo, estaré recibiendo con cariño tu sobre como parte de esta lluvia de bendiciones.<br />
-              ¡Gracias por tu cariño y generosidad!
+              Si deseas acompañar mi felicidad con un detalle, recibiré con gratitud tu sobre, como una bendición más en esta nueva etapa de mi vida.<br />
+              Gracias de corazón por tu cariño y generosidad
             </p>
             <div style={{ textAlign: 'center', marginTop: '1.2rem' }}>
               <img src="/Separador3.svg" alt="Separador decorativo" style={{ width: '120px', height: 'auto', display: 'inline-block' }} />
@@ -745,6 +753,24 @@ const App = () => {
           .foto-card { width: 120px; height: 90px; }
         }
         `}</style>
+
+        {/* Orquídea 5 en la parte inferior de la tarjeta */}
+        <img
+          src="/Orquidea5.svg"
+          alt="Orquídea decorativa inferior"
+          style={{
+            position: 'absolute',
+            bottom: '-115px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '600px',
+            height: 'auto',
+            zIndex: 0,
+            pointerEvents: 'none',
+            opacity: 0.3,
+            filter: 'invert(58%) sepia(70%) saturate(1100%) hue-rotate(-20deg) brightness(70%)'
+          }}
+        />
 
         {/* Modal para subir fotos */}
         <PhotoUploadModal 
