@@ -666,6 +666,7 @@ const App = () => {
           .lluvia-sobres-card { padding: 1.2rem 0.5rem 1.2rem 0.5rem; }
           .lluvia-sobres-titulo { font-size: 1.5rem; }
           .lluvia-sobres-texto { font-size: 1rem; }
+          .lluvia-sobres-texto { padding: 2rem; }
           .lluvia-esquina { width: 40px; }
         }
         `}</style>
@@ -926,8 +927,8 @@ const App = () => {
         /* Estilos responsivos para móviles */
         @media (max-width: 768px) {
           .orquidea-inferior {
-            width: 250px !important;
-            bottom: -60px !important;
+            width: 460px !important;
+            bottom: -110px !important;
             opacity: 0.15 !important;
           }
           .main-card {
