@@ -758,18 +758,7 @@ const App = () => {
         <img
           src="/Orquidea5.svg"
           alt="Orquídea decorativa inferior"
-          style={{
-            position: 'absolute',
-            bottom: '-115px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '600px',
-            height: 'auto',
-            zIndex: 0,
-            pointerEvents: 'none',
-            opacity: 0.3,
-            filter: 'invert(58%) sepia(70%) saturate(1100%) hue-rotate(-20deg) brightness(70%)'
-          }}
+          className="orquidea-inferior"
         />
 
         {/* Modal para subir fotos */}
@@ -922,8 +911,25 @@ const App = () => {
         .beckan-font {
           font-family: 'Beckan', Arial, sans-serif !important;
         }
+        .orquidea-inferior {
+          position: absolute;
+          bottom: -115px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 600px;
+          height: auto;
+          z-index: 0;
+          pointer-events: none;
+          opacity: 0.3;
+          filter: invert(58%) sepia(70%) saturate(1100%) hue-rotate(-20deg) brightness(70%);
+        }
         /* Estilos responsivos para móviles */
         @media (max-width: 768px) {
+          .orquidea-inferior {
+            width: 250px !important;
+            bottom: -60px !important;
+            opacity: 0.15 !important;
+          }
           .main-card {
             max-width: 95% !important;
             margin: 1rem auto !important;
