@@ -437,7 +437,7 @@ const App = () => {
           <div className="confirmacion-card" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <h2 className="vestimenta-titulo beckan-font" style={{ color: '#ffb6c1' }}>Confirma tu asistencia</h2>
             <div className="confirmacion-texto">
-              Antes del 15 de Noviembre haznos saber que contaremos con tu presencia
+              Antes del 1 de Noviembre haznos saber que contaremos con tu presencia
             </div>
             <button className="confirmacion-btn" onClick={() => setShowConfirmationModal(true)}>CONFIRMAR ASISTENCIA</button>
           </div>
