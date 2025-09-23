@@ -308,7 +308,7 @@ const App = () => {
 
   <div style={{ margin: 0, padding: '0px 0.5px 0 0.5px', width: '100%', overflow: 'hidden', borderRadius: '0 0 650px 650px/0 0 680px 680px', position: 'relative' }}>
           <img 
-            src="/Anny_editada.png" 
+            src="/AnnyFinal.jpg" 
             alt="Anny Tatiana Rubio Duque" 
             style={{ 
               width: '100%', 
