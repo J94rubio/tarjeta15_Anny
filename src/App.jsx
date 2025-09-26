@@ -250,41 +250,48 @@ const App = () => {
       {/* Efecto de pétalos cayendo */}
       <FallingPetals />
       
-      {/* Botón de música flotante */}
-      <button
-        onClick={toggleMusic}
-        className="music-button"
-        style={{
-          position: 'fixed',
-          top: '20px',
-          right: '20px',
-          width: '60px',
-          height: '60px',
-          //borderRadius: '50%',
-          backgroundColor: musicPlaying ? '#e91e63' : 'rgba(233, 30, 99, 0.7)',
-          border: '3px solid white',
-          color: 'white',
-          fontSize: '1.5rem',
-          cursor: 'pointer',
-          zIndex: 1000,
-          boxShadow: '0 4px 15px rgba(233, 30, 99, 0.3)',
-          transition: 'all 0.3s ease',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}
-        onMouseOver={(e) => {
-          e.target.style.transform = 'scale(1.1)';
-          e.target.style.backgroundColor = '#c2185b';
-        }}
-        onMouseOut={(e) => {
-          e.target.style.transform = 'scale(1)';
-          e.target.style.backgroundColor = musicPlaying ? '#e91e63' : 'rgba(233, 30, 99, 0.7)';
-        }}
-        title={musicPlaying ? 'Pausar música' : 'Reproducir música'}
-      >
-        💖
-      </button>
+      {/* Botón de música flotante con letrerito */}
+      <div className="music-container">
+        <button
+          onClick={toggleMusic}
+          className="music-button"
+          style={{
+            position: 'fixed',
+            top: '20px',
+            right: '20px',
+            width: '60px',
+            height: '60px',
+            borderRadius: '50%',
+            backgroundColor: musicPlaying ? '#e91e63' : 'rgba(233, 30, 99, 0.7)',
+            border: '3px solid white',
+            color: 'white',
+            fontSize: '1.5rem',
+            cursor: 'pointer',
+            zIndex: 1000,
+            boxShadow: '0 4px 15px rgba(233, 30, 99, 0.3)',
+            transition: 'all 0.3s ease',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+          onMouseOver={(e) => {
+            e.target.style.transform = 'scale(1.1)';
+            e.target.style.backgroundColor = '#c2185b';
+          }}
+          onMouseOut={(e) => {
+            e.target.style.transform = 'scale(1)';
+            e.target.style.backgroundColor = musicPlaying ? '#e91e63' : 'rgba(233, 30, 99, 0.7)';
+          }}
+          title={musicPlaying ? 'Pausar música' : 'Reproducir música'}
+        >
+          💖
+        </button>
+        {!musicPlaying && (
+          <div className="music-hint">
+            ♪ Click aquí
+          </div>
+        )}
+      </div>
       
   <div className="main-card" style={{
         
@@ -924,6 +931,43 @@ const App = () => {
           opacity: 0.3;
           filter: invert(58%) sepia(70%) saturate(1100%) hue-rotate(-20deg) brightness(70%);
         }
+        .music-container {
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          z-index: 1001;
+        }
+        .music-hint {
+          position: absolute;
+          top: 70px;
+          right: -10px;
+          background: rgba(172, 57, 57, 0.95);
+          color: #f7d6d6;
+          font-family: 'Bellerose', Arial, sans-serif;
+          font-size: 0.8rem;
+          padding: 0.4rem 0.8rem;
+          border-radius: 12px;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+          white-space: nowrap;
+          pointer-events: none;
+          animation: musicPulse 2s ease-in-out infinite;
+        }
+        .music-hint::before {
+          content: '';
+          position: absolute;
+          top: -5px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 0;
+          border-left: 5px solid transparent;
+          border-right: 5px solid transparent;
+          border-bottom: 5px solid rgba(172, 57, 57, 0.95);
+        }
+        @keyframes musicPulse {
+          0%, 100% { opacity: 0.8; transform: translateY(0); }
+          50% { opacity: 1; transform: translateY(-2px); }
+        }
         /* Estilos responsivos para móviles */
         @media (max-width: 768px) {
           .orquidea-inferior {
@@ -945,12 +989,22 @@ const App = () => {
             font-size: 1.2rem !important;
           }
           
+          .music-container {
+            top: 15px !important;
+            right: 15px !important;
+          }
           .music-button {
             width: 50px !important;
             height: 50px !important;
             top: 15px !important;
             right: 15px !important;
             font-size: 1.2rem !important;
+          }
+          .music-hint {
+            font-size: 0.7rem !important;
+            padding: 0.3rem 0.6rem !important;
+            top: 60px !important;
+            right: -5px !important;
           }
           
           .map-iframe {
