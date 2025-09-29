@@ -178,13 +178,30 @@ const ConfirmationModal = ({ isOpen, onClose }) => {
             fontFamily: 'Beckan, Arial, sans-serif',
             fontSize: '2.7rem',
             color: '#e48497',
-            margin: '0 0 1.5rem 0',
+            margin: '0 0 1rem 0',
             fontWeight: 'bold',
             letterSpacing: '0.07em',
             textShadow: '0 2px 8px #fff0f6'
           }}>
             Confirma tu Asistencia
           </h2>
+          
+          {/* Mensaje recordatorio sobre lugares reservados */}
+          <div style={{
+            marginBottom: '1.5rem',
+            textAlign: 'center'
+          }}>
+            <p style={{
+              fontFamily: 'Bellerose, Arial, sans-serif',
+              fontSize: '1.1rem',
+              color: '#b43b35',
+              margin: 0,
+              lineHeight: 1.4,
+              fontWeight: 'bold'
+            }}>
+              💌 Recuerda que en tu invitación indicamos la cantidad de lugares reservados para ti
+            </p>
+          </div>
         </div>
         <form onSubmit={handleSubmit} style={{
           display: 'flex',
